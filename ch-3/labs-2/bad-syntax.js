@@ -1,5 +1,6 @@
-'use strict'
+"use strict";
 
-function f (a, a) {
-  
+const a = "enter name";
+function f(a, a) {
+  console.log(a);
 }

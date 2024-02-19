@@ -1,10 +1,10 @@
 "use strict";
 function prefixer(name) {
   return function (message) {
-    if (message.includes("Hello")) {
-      return "Hello" + name;
+    if (message.includes("Goodbye")) {
+      return "Goodbye " + name;
     } else {
-      return "Goodbye" + name;
+      return name + " " + message;
     }
   };
 }

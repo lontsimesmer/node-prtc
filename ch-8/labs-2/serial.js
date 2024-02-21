@@ -1,15 +1,10 @@
 "use strict";
 const { promisify } = require("util");
 
-// const print = (err, contents) => {
-//   if (err) console.error(err)
-//   else console.log(contents)
-// }
-
 const opA = (cb) => {
   setTimeout(() => {
     cb(null, "A");
-  }, 500);
+  }, 125);
 };
 
 const opB = (cb) => {
@@ -21,7 +16,7 @@ const opB = (cb) => {
 const opC = (cb) => {
   setTimeout(() => {
     cb(null, "C");
-  }, 125);
+  }, 500);
 };
 
 const promA = promisify(opA);
@@ -40,11 +35,3 @@ const print = (err, contents) => {
   if (err) console.log(err);
   else console.log(contents);
 };
-
-// opA((err, content) => {
-//   print(err, content)
-//   opB((err, data) => {
-//     print(err, data)
-//     opC(print)
-//   })
-// })

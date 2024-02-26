@@ -18,3 +18,10 @@ function listener() {
 }
 
 ee.once("tick", listener);
+
+ee.on("my-event", () => {
+  console.log("my-event fired");
+});
+ee.emit("my-event");
+ee.emit("my-event");
+ee.emit("my-event");

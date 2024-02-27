@@ -10,6 +10,12 @@ function parseUrl(str) {
   }
 }
 
+function doTask(amount) {
+  if (typeof amount !== number) throw new Error("amount must be a number");
+  else return amount / 2;
+}
+doTask(5);
+
 assert.doesNotThrow((error) => {
   parseUrl("invalid-url");
 });

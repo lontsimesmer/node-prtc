@@ -14,7 +14,7 @@ function doTask(amount) {
   if (typeof amount !== number) throw new Error("amount must be a number");
   else return amount / 2;
 }
-doTask(5);
+doTask(-1);
 
 assert.doesNotThrow((error) => {
   parseUrl("invalid-url");

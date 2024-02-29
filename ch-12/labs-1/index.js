@@ -1,6 +1,19 @@
 "use strict";
 const { Readable, Writable } = require("stream");
 const assert = require("assert");
+const net = require("net");
+const socket = net.connect(3000);
+
+socket.pipe(process.stdout);
+
+socket.write("Hello");
+setTimeout(() => {
+  socket.write("all done");
+  setTimeout(() => {
+    socket.end();
+  }, 250);
+}, 3250);
+
 const createWritable = () => {
   const sink = [];
   let piped = false;
@@ -10,7 +23,7 @@ const createWritable = () => {
   });
   const writable = new Writable({
     decodeStrings: false,
-    write(chunk, enc, cb) {
+    write(chunk, _enc, cb) {
       sink.push(chunk);
       cb();
     },

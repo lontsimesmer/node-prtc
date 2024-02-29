@@ -1,17 +1,11 @@
 "use strict";
-const {
-  Readable,
-  Writable,
-  Transform,
-  PassThrough,
-  pipeline,
-} = require("stream");
+const { Readable, Writable, Transform, pipeline } = require("stream");
 const assert = require("assert");
-const { isUtf8 } = require("buffer");
+require("buffer");
 const createWritable = () => {
   const sink = [];
   const writable = new Writable({
-    write(chunk, enc, cb) {
+    write(chunk, _enc, cb) {
       sink.push(chunk.toString());
       cb();
     },
@@ -27,7 +21,7 @@ const writable = createWritable();
 // incoming characters
 const transform = new Transform({
   encoding: "utf8",
-  transform(chunk, encoding, next) {
+  transform(chunk, _encoding, next) {
     next(null, chunk.toString().toUpperCase());
   },
 });

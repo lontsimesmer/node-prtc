@@ -17,8 +17,10 @@ const out = join(__dirname, "out.txt");
 
 function exercise() {
   const outputFilePath = path.join(folderPath, outputPath);
+  const writeStream = fs.createWriteStream(outputFilePath);
   // TODO read the files in the project folder
   // and write the to the out.txt file
+  writeStream.write(`out.txt`);
 }
 
 exercise();

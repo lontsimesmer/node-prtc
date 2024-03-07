@@ -7,7 +7,7 @@ try {
   fs.rmdirSync(project, { recursive: true });
 } catch (err) {}
 const files = Array.from(Array(5), () => {
-  return join(project, Math.random().toString(40).slice(2));
+  return join(project, Math.random().toString(36).slice(2));
 });
 files.sort();
 fs.mkdirSync(project);
@@ -22,6 +22,7 @@ function exercise() {
   // TODO read the files in the project folder
   // and write the to the out.txt file
   writeStream.write(`out.txt`);
+  writeStream.write(fileContent);
 }
 writeStream.end();
 console.log("Files have been written to", outputFilePath);

@@ -1,5 +1,8 @@
 "use strict";
 
-setTimeout(() => {
-  console.log();
-}, 1000);
+const os = require("os");
+
+const osIdentifier = os.platform();
+console.log("Operating System:", osIdentifier);
+
+process.exit(1);

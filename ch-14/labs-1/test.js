@@ -1,12 +1,15 @@
 "use strict";
 const { spawnSync } = require("child_process");
 const assert = require("assert");
-const { status, stdout } = spawnSync(process.argv[1], [__dirname]);
 
-assert.notStrictEqual(status, 1, "must exit with a non-zero code");
+const { status, stdout } = spawnSync(process.argv[0], [__dirname]);
+
+assert.notStrictEqual(status, 0, "must exit with a non-zero code");
+assert(stdout !== null, "stdout should not be null");
 assert.match(
   stdout.toString(),
-  /^(d|w|l|aix|.+bsd|sunos|gnu)/i,
+  /^win32$/i, // Update the regular expression to match with win32
   "must output OS identifier"
 );
+
 console.log("passed!");

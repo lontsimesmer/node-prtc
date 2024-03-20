@@ -16,18 +16,25 @@ for (const f of files) fs.closeSync(fs.openSync(f, "w"));
 const out = join(__dirname, "out.txt");
 
 function exercise() {
-  const outputFilePath = path.join(folderPath, outputPath);
+  const folderPath = project; // Folder path should be project
+  const outputPath = "out.txt"; // Output path should be "out.txt"
+  const outputFilePath = join(folderPath, outputPath);
   const writeStream = fs.createWriteStream(outputFilePath);
 
-  // TODO read the files in the project folder
-  // and write the to the out.txt file
-  writeStream.write(`out.txt`);
-  writeStream.write(fileContent);
+  const fileContent = files.map((f) => basename(f)).join(";"); // Generate content by joining the basenames of files
+
+  // Read the files in the project folder and write them to the out.txt file
+  for (const file of files) {
+    const content = fs.readFileSync(file, "utf8");
+    writeStream.write(content);
+  }
+
+  writeStream.end();
+  console.log("Files have been written to", outputFilePath);
 }
-writeStream.end();
-console.log("Files have been written to", outputFilePath);
 
 exercise();
+
 assert.deepStrictEqual(
   fs
     .readFileSync(out)

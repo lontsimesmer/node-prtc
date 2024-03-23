@@ -1,7 +1,7 @@
 "use strict";
 const { Readable, Writable, Transform, pipeline } = require("stream");
 const assert = require("assert");
-require("buffer");
+
 const createWritable = () => {
   const sink = [];
   const writable = new Writable({
@@ -13,16 +13,16 @@ const createWritable = () => {
   writable.sink = sink;
   return writable;
 };
+
 const readable = Readable.from(["a", "b", "c"]);
 const writable = createWritable();
 
-// TODO: replace the pass through stream
-// with a transform stream that uppercases
-// incoming characters
+// Replace the PassThrough stream with a Transform stream that uppercases incoming chunks
 const transform = new Transform({
-  encoding: "utf8",
-  transform(chunk, _encoding, next) {
-    next(null, chunk.toString().toUpperCase());
+  transform(chunk, _enc, cb) {
+    const uppercasedChunk = chunk.toString().toUpperCase();
+    this.push(uppercasedChunk);
+    cb();
   },
 });
 

@@ -1,9 +1,10 @@
 "use strict";
+
 const assert = require("assert");
 const { EventEmitter } = require("events");
-
 const ee = new EventEmitter();
 let count = 0;
+
 setInterval(() => {
   ee.emit("tick");
 }, 100);
@@ -19,9 +20,9 @@ function listener() {
 
 ee.once("tick", listener);
 
-ee.on("my-event", () => {
-  console.log("my-event fired");
-});
-ee.emit("my-event");
-ee.emit("my-event");
-ee.emit("my-event");
+// ee.on("my-event", () => {
+//   console.log("my-event fired");
+// });
+// ee.emit("my-event");
+// ee.emit("my-event");
+// ee.emit("my-event");

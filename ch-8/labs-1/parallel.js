@@ -21,6 +21,12 @@ const opC = (cb) => {
   }, 125);
 };
 
-opA(print);
-opB(print);
-opC(print);
+opC((errC, resultC) => {
+  print(errC, `[ ${resultC} ]`);
+  opB((errB, resultB) => {
+    print(errB, `[ ${resultB} ]`);
+    opA((errA, resultA) => {
+      print(errA, `[ ${resultA} ]`);
+    });
+  });
+});

@@ -23,39 +23,34 @@ const opC = (cb) => {
   }, 125);
 };
 
-const promisifiedOpA = promisify(opA);
-const promisifiedOpB = promisify(opB);
-const promisifiedOpC = promisify(opC);
+const promA = promisify(opA);
+const promB = promisify(opB);
+const promC = promisify(opC);
 
 // Method 1 with promisify function
 
-promisifiedOpA()
-  .then((resultA) => {
-    print(null, `[ ${resultA} ]`);
-    return promisifiedOpB();
-  })
-  .then((resultB) => {
-    print(null, `[ ${resultB} ]`);
-    return promisifiedOpC();
-  })
-  .then((resultC) => {
-    print(null, `[ ${resultC} ]`);
-  })
-  .catch((error) => {
-    print(error);
-  });
+// promisifiedOpA()
+//   .then((resultA) => {
+//     print(null, `[ ${resultA} ]`);
+//     return promisifiedOpB();
+//   })
+//   .then((resultB) => {
+//     print(null, `[ ${resultB} ]`);
+//     return promisifiedOpC();
+//   })
+//   .then((resultC) => {
+//     print(null, `[ ${resultC} ]`);
+//   })
+//   .catch((error) => {
+//     print(error);
+//   });
 
 // Method 2 with async function
 
-// async function run() {
-//   await promA().then((data) => console.log(data));
-//   await promB().then((data) => console.log(data));
-//   await promC().then((data) => console.log(data));
-// }
+async function run() {
+  await promA().then((data) => console.log(`[ ${data} ]`));
+  await promB().then((data) => console.log(`[ ${data} ]`));
+  await promC().then((data) => console.log(`[ ${data} ]`));
+}
 
-// run().catch((err) => print(err));
-
-// const print = (err, contents) => {
-//   if (err) console.log(err);
-//   else console.log(contents);
-// };
+run().catch((err) => print(err));

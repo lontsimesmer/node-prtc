@@ -30,14 +30,14 @@ felix.hiss(); // prints Felix the cat: hsss
 
 // prototype checks, do not remove
 const felixProto = Object.getPrototypeOf(felix);
-const felixProtoProto = Object.getPrototypeOf(felixProto);
-const felixProtoProtoProto = Object.getPrototypeOf(felixProtoProto);
+const felixDiProto = Object.getPrototypeOf(felixProto);
+const felixTriProto = Object.getPrototypeOf(felixDiProto);
 
 assert(Object.getOwnPropertyNames(felixProto).length === 1);
-assert(Object.getOwnPropertyNames(felixProtoProto).length === 1);
-assert(Object.getOwnPropertyNames(felixProtoProtoProto).length === 1);
+assert(Object.getOwnPropertyNames(felixDiProto).length === 1);
+assert(Object.getOwnPropertyNames(felixTriProto).length === 1);
 assert(typeof felixProto.meow === "function");
-assert(typeof felixProtoProto.purr === "function");
-assert(typeof felixProtoProtoProto.hiss === "function");
+assert(typeof felixDiProto.purr === "function");
+assert(typeof felixTriProto.hiss === "function");
 
 console.log("prototype checks passed!");

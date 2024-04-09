@@ -29,21 +29,21 @@ const promC = promisify(opC);
 
 // Method 1 with promisify function
 
-// promisifiedOpA()
-//   .then((resultA) => {
-//     print(null, `[ ${resultA} ]`);
-//     return promisifiedOpB();
-//   })
-//   .then((resultB) => {
-//     print(null, `[ ${resultB} ]`);
-//     return promisifiedOpC();
-//   })
-//   .then((resultC) => {
-//     print(null, `[ ${resultC} ]`);
-//   })
-//   .catch((error) => {
-//     print(error);
-//   });
+promisifiedOpA()
+  .then((resultA) => {
+    print(null, `[ ${resultA} ]`);
+    return promisifiedOpB();
+  })
+  .then((resultB) => {
+    print(null, `[ ${resultB} ]`);
+    return promisifiedOpC();
+  })
+  .then((resultC) => {
+    print(null, `[ ${resultC} ]`);
+  })
+  .catch((error) => {
+    print(error);
+  });
 
 // Method 2 with async function
 

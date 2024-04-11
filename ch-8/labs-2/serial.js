@@ -23,11 +23,11 @@ const opC = (cb) => {
   }, 125);
 };
 
-const promA = promisify(opA);
-const promB = promisify(opB);
-const promC = promisify(opC);
-
 // Method 1 with promisify function
+
+const promisifiedOpA = promisify(opA);
+const promisifiedOpB = promisify(opB);
+const promisifiedOpC = promisify(opC);
 
 promisifiedOpA()
   .then((resultA) => {
@@ -47,10 +47,14 @@ promisifiedOpA()
 
 // Method 2 with async function
 
-async function run() {
-  await promA().then((data) => console.log(`[ ${data} ]`));
-  await promB().then((data) => console.log(`[ ${data} ]`));
-  await promC().then((data) => console.log(`[ ${data} ]`));
-}
+// const promA = promisify(opA);
+// const promB = promisify(opB);
+// const promC = promisify(opC);
 
-run().catch((err) => print(err));
+// async function run() {
+//   await promA().then((data) => console.log(`[ ${data} ]`));
+//   await promB().then((data) => console.log(`[ ${data} ]`));
+//   await promC().then((data) => console.log(`[ ${data} ]`));
+// }
+
+// run().catch((err) => print(err));

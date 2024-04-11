@@ -25,6 +25,20 @@ const opC = (cb) => {
 
 // Method 1 with promisify function
 
+const promA = promisify(opA);
+const promB = promisify(opB);
+const promC = promisify(opC);
+
+async function run() {
+  await promA().then((data) => console.log(`[ ${data} ]`));
+  await promB().then((data) => console.log(`[ ${data} ]`));
+  await promC().then((data) => console.log(`[ ${data} ]`));
+}
+
+run().catch((err) => print(err));
+
+// Another way of method 1
+
 const promisifiedOpA = promisify(opA);
 const promisifiedOpB = promisify(opB);
 const promisifiedOpC = promisify(opC);
@@ -45,16 +59,26 @@ promisifiedOpA()
     print(error);
   });
 
-// Method 2 with async function
+// Method 2 using callback functions (recursion)
 
-// const promA = promisify(opA);
-// const promB = promisify(opB);
-// const promC = promisify(opC);
-
-// async function run() {
-//   await promA().then((data) => console.log(`[ ${data} ]`));
-//   await promB().then((data) => console.log(`[ ${data} ]`));
-//   await promC().then((data) => console.log(`[ ${data} ]`));
-// }
-
-// run().catch((err) => print(err));
+opA((err, resultA) => {
+  if (err) {
+    print(err);
+    return;
+  }
+  print(null, `[ ${resultA} ]`);
+  opB((err, resultB) => {
+    if (err) {
+      print(err);
+      return;
+    }
+    print(null, `[ ${resultB} ]`);
+    opC((err, resultC) => {
+      if (err) {
+        print(err);
+        return;
+      }
+      print(null, `[ ${resultC} ]`);
+    });
+  });
+});

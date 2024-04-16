@@ -1,5 +1,5 @@
 "use strict";
-const { EventEmitter } = require("events");
+import { EventEmitter } from require('events');
 
 process.on("uncaughtException", (err) => {
   console.log(err.message);

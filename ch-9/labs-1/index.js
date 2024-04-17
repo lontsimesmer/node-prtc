@@ -18,7 +18,12 @@ function listener() {
   }, 250);
 }
 
+function listener1() {
+  console.log("listener 1 called");
+}
+
 ee.once("tick", listener);
+ee.once("tick", listener1);
 
 // ee.on("my-event", () => {
 //   console.log("my-event fired");

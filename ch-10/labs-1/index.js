@@ -1,5 +1,6 @@
 "use strict";
 const assert = require("assert");
+
 const invalidUrl = "not a valid url";
 const result = parseUrl(invalidUrl);
 console.log(result);

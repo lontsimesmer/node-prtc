@@ -13,11 +13,17 @@ async function read(file) {
 }
 
 async function check() {
-  await assert.rejects(
-    read("not-a-valid-filepath"),
-    new Error("failed to read")
-  );
-  assert.deepEqual(await read(__filename), readFileSync(__filename));
-  console.log("passed!");
+  try {
+    await assert.rejects(read("not-a-valid-filepath"), (error) => {
+      assert.strictEqual(error.message, "failed to read");
+      return true;
+    });
+
+    assert.deepEqual(await read(__filename), readFileSync(__filename));
+
+    console.log("passed!");
+  } catch (error) {
+    console.error("Failed:", error);
+  }
 }
 check();

@@ -17,12 +17,12 @@ const createWritable = () => {
 const readable = Readable.from(["a", "b", "c"]);
 const writable = createWritable();
 
-// Replace the PassThrough stream with a Transform stream that uppercases incoming chunks
+// Custom transform stream to uppercase incoming chunks
 const transform = new Transform({
-  transform(chunk, _enc, cb) {
+  transform(chunk, encoding, callback) {
     const uppercasedChunk = chunk.toString().toUpperCase();
     this.push(uppercasedChunk);
-    cb();
+    callback();
   },
 });
 

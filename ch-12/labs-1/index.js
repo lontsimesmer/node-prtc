@@ -28,6 +28,12 @@ const createWritable = () => {
   return writable;
 };
 
+const readable = Readable.from(["a", "b", "c"]);
+const writable = createWritable();
+
+// Connect the readable stream to the writable stream using pipe
+readable.pipe(writable);
+
 // Create the writable stream
 const writable1 = new Writable({
   write(chunk, encoding, callback) {
@@ -40,12 +46,6 @@ const writable1 = new Writable({
 // Create the readable streams
 const readable1 = Readable.from(["Hello"]);
 const readable2 = Readable.from(["World"]);
-
-const readable = Readable.from(["a", "b", "c"]);
-const writable = createWritable();
-
-// Connect the readable stream to the writable stream using pipe
-readable.pipe(writable);
 
 // Connect the readable streams to the writable stream using pipe
 readable1.pipe(writable1);

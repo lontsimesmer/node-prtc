@@ -18,13 +18,15 @@ const readable = Readable.from(["a", "b", "c"]);
 const writable = createWritable();
 
 // Custom transform stream to uppercase incoming chunks
-const transform = new Transform({
-  transform(chunk, encoding, callback) {
+class UppercaseTransform extends Transform {
+  _transform(chunk, encoding, callback) {
     const uppercasedChunk = chunk.toString().toUpperCase();
     this.push(uppercasedChunk);
     callback();
-  },
-});
+  }
+}
+
+const transform = new UppercaseTransform();
 
 pipeline(readable, transform, writable, (err) => {
   assert.ifError(err);

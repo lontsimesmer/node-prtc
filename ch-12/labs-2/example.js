@@ -6,16 +6,16 @@ class DoubleTransform extends Transform {
     super(options);
   }
 
-  _transform(chunks, encoding, callback) {
-    const transformedChunks = chunks.map((num) => num * 2);
-    const buffer = Buffer.from(JSON.stringify(transformedChunks));
+  _transform(chunk, encoding, callback) {
+    const transformedChunk = chunk * 2;
+    const buffer = Buffer.from(JSON.stringify(transformedChunk));
     this.push(buffer);
     callback();
   }
 }
 
 // Create a reable stream
-const readable = Readable.from([[1, 2, 3, 4, 5]]);
+const readable = Readable.from([1, 2, 3, 4, 5]);
 
 // Create a writable stream
 const writable = new Writable({

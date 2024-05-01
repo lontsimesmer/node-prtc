@@ -7,9 +7,8 @@ class DoubleTransform extends Transform {
   }
 
   _transform(chunk, encoding, callback) {
-    const transformedChunk = Buffer.from((chunk * 2).toString());
-    // const buffer = Buffer.from(JSON.stringify(transformedChunk));
-    this.push(transformedChunk);
+    const transformedChunk = (chunk * 2).toString();
+    this.push(transformedChunk, "utf-8");
     callback();
   }
 }

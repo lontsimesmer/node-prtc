@@ -7,14 +7,14 @@ class DoubleTransform extends Transform {
   }
 
   _transform(chunk, encoding, callback) {
-    const transformedChunk = (chunk * 2).toString();
-    this.push(transformedChunk, "utf-8");
+    const transformedChunk = Buffer.from((chunk * 2).toString(), "utf8");
+    this.push(transformedChunk);
     callback();
   }
 }
 
 // Create a reable stream
-const readable = Readable.from([1, 2, 3, 4, 5]);
+const readable = Readable.from([1, 2, 3, 4, 5].map((num) => num.toString()));
 
 // Create a writable stream
 const writable = new Writable({

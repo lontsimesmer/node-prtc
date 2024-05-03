@@ -6,9 +6,9 @@ class DoubleTransform extends Transform {
     super(options);
   }
 
-  _transform(chunk, encoding, callback) {
+  _transform(chunk, _encoding, callback) {
     const transformedChunk = Buffer.from((chunk * 2).toString(), "utf8");
-    this.push(transformedChunk);
+    this.push(transformedChunk, "utf8");
     callback();
   }
 }
@@ -18,7 +18,7 @@ const readable = Readable.from([1, 2, 3, 4, 5].map((num) => num.toString()));
 
 // Create a writable stream
 const writable = new Writable({
-  write(chunk, encoding, callback) {
+  write(chunk, _encoding, callback) {
     console.log("Received transformed data:", chunk.toString());
     callback();
   },

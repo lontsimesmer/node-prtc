@@ -5,7 +5,7 @@ const fs = require("fs");
 
 const project = join(__dirname, "project");
 try {
-  fs.rmdirSync(project, { recursive: true });
+  fs.rmSync(project, { recursive: true });
 } catch (err) {}
 
 const files = Array.from(Array(5), () => {

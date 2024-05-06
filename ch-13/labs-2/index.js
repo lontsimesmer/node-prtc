@@ -7,7 +7,7 @@ const { setTimeout: timeout } = require("timers/promises");
 const project = join(__dirname, "project");
 
 try {
-  fs.rmdirSync(project, { recursive: true });
+  fs.rmSync(project, { recursive: true });
 } catch (err) {
   console.error(err);
 }

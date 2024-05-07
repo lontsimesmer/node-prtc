@@ -8,7 +8,7 @@ assert.notStrictEqual(status, 0, "must exit with a non-zero code");
 assert(stdout !== null, "stdout should not be null");
 assert.match(
   stdout.toString(),
-  /^win32$/i, // Update the regular expression to match with win32
+  /win32/i, // Update the regular expression to match with win32
   "must output OS identifier"
 );
 

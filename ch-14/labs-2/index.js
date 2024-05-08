@@ -3,14 +3,14 @@
 const os = require("os");
 const v8 = require("v8");
 
-// const inSecondsUptime = os.uptime();
-// const uptimeInSeconds = process.uptime();
+const inSecondsUptime = os.uptime();
+const uptimeInSeconds = process.uptime();
 
-// const totalMemoryInBytes = os.totalmem();
-// const totalMemoryInGB = Math.floor(totalMemoryInBytes / (1024 * 1024 * 1024));
+const totalMemoryInBytes = os.totalmem();
+const totalMemoryInGB = Math.floor(totalMemoryInBytes / (1024 * 1024 * 1024));
 
-// const totalHeapSizeInBytes = v8.getHeapStatistics().total_heap_size;
-// const totalHeapSizeInMB = Math.floor(totalHeapSizeInBytes / (1024 * 1024));
+const totalHeapSizeInBytes = v8.getHeapStatistics().total_heap_size;
+const totalHeapSizeInMB = Math.floor(totalHeapSizeInBytes / (1024 * 1024));
 
 setTimeout(() => {
   console.log(process.uptime()); // TODO output uptime of process

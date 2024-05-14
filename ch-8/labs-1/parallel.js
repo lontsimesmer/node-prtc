@@ -56,3 +56,19 @@ opC((err, resultC) => {
     });
   });
 });
+
+// Method 3 using async Library
+
+const async = require("async");
+
+// Using async.series, call the function in the desired order
+
+async.series([opC, opB, opA], (err, results) => {
+  if (err) {
+    print(err);
+  } else {
+    results.forEach((result) => {
+      print(null, `[ ${result} ]`);
+    });
+  }
+});

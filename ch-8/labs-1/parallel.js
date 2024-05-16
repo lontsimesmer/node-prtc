@@ -10,15 +10,21 @@ const opA = (cb) => {
 };
 
 const opB = (cb) => {
-  setTimeout(() => {
-    cb(null, "B");
-  }, 250);
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      cb(null, "B");
+      resolve("B");
+    }, 250);
+  });
 };
 
 const opC = (cb) => {
-  setTimeout(() => {
-    cb(null, "C");
-  }, 125);
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      cb(null, "C");
+      resolve("C");
+    }, 125);
+  });
 };
 
 // Method 1 using recursion

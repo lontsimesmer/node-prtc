@@ -18,16 +18,5 @@ function listener() {
   }, 250);
 }
 
-function listener1() {
-  console.log("listener 1 called");
-}
-
+// Register the listener function to be called once
 ee.once("tick", listener);
-ee.once("tick", listener1);
-
-// ee.on("my-event", () => {
-//   console.log("my-event fired");
-// });
-// ee.emit("my-event");
-// ee.emit("my-event");
-// ee.emit("my-event");

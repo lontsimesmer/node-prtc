@@ -10,11 +10,11 @@ function parseUrl(str) {
     const parsed = new URL(str);
     return parsed;
   } catch (error) {
-    return null;
+    // return null;
   }
 }
 
-assert.doesNotThrow((_error) => {
+assert.doesNotThrow(() => {
   parseUrl("invalid-url");
 });
 assert.equal(parseUrl("invalid-url"), null);

@@ -44,4 +44,4 @@ check()
 Modify the body of the read function so that any possible rejection by the promise returned
 from the `fs/promises readFile` call results in the read function rejecting with a `new
 Error('failed to read')` error. If implemented correctly, when node index.js is
-executed the output should be `passed!`:
+executed the output should be `passed!`.

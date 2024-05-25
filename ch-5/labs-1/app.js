@@ -1,20 +1,16 @@
 "use strict";
 
 // Method 1
-// function prefixer(name) {
-//   return function (message) {
-//     if (message.includes("Goodbye")) {
-//       return "Goodbye " + name;
-//     } else {
-//       return name + " " + message;
-//     }
+// function prefixer(prefix) {
+//   return function (name) {
+//     return prefix + name;
 //   };
 // }
 
 // Method 2
 function prefixer(prefix) {
   return function (name) {
-    return prefix + name;
+    return `${prefix}${name}`;
   };
 }
 

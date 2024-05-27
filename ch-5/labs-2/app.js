@@ -40,4 +40,4 @@ assert(typeof felixProto.meow === "function");
 assert(typeof felixDiProto.purr === "function");
 assert(typeof felixTriProto.hiss === "function");
 
-console.log("prototype checks passed!");
+console.log("passed!");

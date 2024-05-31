@@ -1,32 +1,32 @@
 const assert = require("assert");
 
-// const leopard = {
-//   hiss() {
-//     console.log("Felix the cat: hsss");
-//   },
-// };
+const leopard = {
+  hiss() {
+    return "Felix the cat: hsss";
+  },
+};
 
-// const lynx = Object.create(leopard, {
-//   purr: {
-//     value: function () {
-//       console.log("Felix the cat: prrr");
-//     },
-//   },
-// });
+const lynx = Object.create(leopard, {
+  purr: {
+    value: function () {
+      return "Felix the cat: prrr";
+    },
+  },
+});
 
-// const cat = Object.create(lynx, {
-//   meow: {
-//     value: function () {
-//       console.log("Felix the cat: meow");
-//     },
-//   },
-// });
+const cat = Object.create(lynx, {
+  meow: {
+    value: function () {
+      return "Felix the cat: meow";
+    },
+  },
+});
 
-// const felix = Object.create(cat);
+const felix = Object.create(cat);
 
-// felix.meow(); // prints Felix the cat: meow
-// felix.purr(); // prints Felix the cat: prrr
-// felix.hiss(); // prints Felix the cat: hsss
+felix.meow(); // prints Felix the cat: meow
+felix.purr(); // prints Felix the cat: prrr
+felix.hiss(); // prints Felix the cat: hsss
 
 // prototype checks, do not remove
 const felixProto = Object.getPrototypeOf(felix);

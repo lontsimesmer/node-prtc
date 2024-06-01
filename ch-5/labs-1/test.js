@@ -2,7 +2,7 @@
 
 function prefixer(name) {
   return function (message) {
-    if (message.includes("Goodbye")) {
+    if (message.includes("Hello")) {
       return "Goodbye" + name;
     } else {
       return name + " " + message;

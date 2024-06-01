@@ -1,11 +1,11 @@
 "use strict";
 
 // Method 1
-// function prefixer(prefix) {
-//   return function (name) {
-//     return prefix + name;
-//   };
-// }
+function prefixer(prefix) {
+  return function (name) {
+    return prefix + name;
+  };
+}
 
 // Method 2
 function prefixer(prefix) {

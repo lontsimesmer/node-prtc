@@ -28,6 +28,8 @@ class UppercaseTransform extends Transform {
 
 const transform = new UppercaseTransform();
 
+// Replace the PassThrough stream with a Transform stream that uppercases the incoming chunks
+
 pipeline(readable, transform, writable, (err) => {
   assert.ifError(err);
   assert.deepStrictEqual(writable.sink, ["A", "B", "C"]);

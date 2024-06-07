@@ -18,6 +18,13 @@ for (const f of files) fs.closeSync(fs.openSync(f, "w"));
 const out = join(__dirname, "out.txt");
 
 function exercise() {
+  // Read the file in the projects folder
+  const fileNames = file.map((file) => path.basename(file));
+
+  // Write the file names to the out.txt folder
+}
+
+function exercise() {
   const fileNames = [];
   const projectFiles = fs.readdirSync(project);
 

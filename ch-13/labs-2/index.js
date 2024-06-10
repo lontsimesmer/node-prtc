@@ -45,14 +45,18 @@ writer().catch((err) => {
 
 function exercise(project) {
   const files = new Set(fs.readdirSync(project));
+
   fs.watch(project, (evt, filename) => {
     try {
       const filepath = join(project, filename);
       const stat = fs.statSync(filepath);
-      if (evt === "rename" && !stat.isDirectory()) {
-        // Only set the answer variable if the file is newly created and not a directory
+
+      // Check if the file is newly created and not a directory
+      if (evt === "create" && !stat.isDirectory()) {
         answer = filepath;
       }
-    } catch (err) {}
+    } catch (err) {
+      // Ignore errors
+    }
   });
 }

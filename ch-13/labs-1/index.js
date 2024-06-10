@@ -19,28 +19,29 @@ const out = join(__dirname, "out.txt");
 
 function exercise() {
   // Read the file in the projects folder
-  const fileNames = file.map((file) => path.basename(file));
+  const fileNames = files.map((file) => path.basename(file));
 
   // Write the file names to the out.txt folder
+  fs.writeFileSync(out, fileNames.join(","));
 }
 
-function exercise() {
-  const fileNames = [];
-  const projectFiles = fs.readdirSync(project);
+// function exercise() {
+//   const fileNames = [];
+//   const projectFiles = fs.readdirSync(project);
 
-  for (const file of projectFiles) {
-    const fileName = join(project, file);
-    const stats = fs.statSync(fileName);
+//   for (const file of projectFiles) {
+//     const fileName = join(project, file);
+//     const stats = fs.statSync(fileName);
 
-    if (stats.isFile()) {
-      fileNames.push(file);
-    }
-  }
+//     if (stats.isFile()) {
+//       fileNames.push(file);
+//     }
+//   }
 
-  const content = fileNames.join(",");
+//   const content = fileNames.join(",");
 
-  fs.writeFileSync(out, content);
-}
+//   fs.writeFileSync(out, content);
+// }
 
 exercise();
 

@@ -3,7 +3,7 @@
 const osNames = [
   "Windows",
   "Linux",
-  "MacOS",
+  "macOS",
   "sunOS",
   "FreeBSD",
   "AIX",
@@ -40,4 +40,20 @@ if (fs.existsSync(directory) && fs.statSync(directory).isDirectory()) {
   }
 } else {
   console.log(`Error: "${directory}" is not a valid directory.`);
+}
+
+// Information extraction from log files
+
+const logContent = `
+2024-06-13 11:51:00 - OS: Windows
+2024-06-13 11:51:01 - OS: Linux
+2024-06-13 11:51:02 - OS: macOs
+2024-06-13 11:51:03 - OS: sunOs
+2024-06-13 11:51:04 - OS: FreeBSD
+2024-06-13 11:51:05 - OS: AIX`;
+
+const matches = logContent.match(regex);
+
+for (const osName of matches) {
+  console.log(`Operating system detected: ${osName}`);
 }

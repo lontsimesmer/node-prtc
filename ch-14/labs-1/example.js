@@ -44,7 +44,7 @@ if (fs.existsSync(directory) && fs.statSync(directory).isDirectory()) {
 
 // Information extraction from log files
 
-const regexp = /OS: (Windows|Linux|macOs|sunOs|FreeBSD|AIX)/gi;
+// const regexp = /OS: (Windows|Linux|macOs|sunOs|FreeBSD|AIX)/gi;
 const logContent = `
 2024-06-13 11:51:00 - OS: Windows
 2024-06-13 11:51:01 - OS: Linux
@@ -54,12 +54,21 @@ const logContent = `
 2024-06-13 11:51:05 - OS: AIX
 `;
 
-const matches = logContent.match(regexp);
+const lines = logContent.trim().split("\n");
+const regexp = /OS:\s*(\w+)/i;
 
-if (matches) {
-  for (let i = 0; i < matches.length; i++) {
-    console.log(`Operating system detected: ${matches[i].replace("OS: ", "")}`);
+for (const line of lines) {
+  const parts = line.match(regexp);
+  if (parts) {
+    console.log(`Operating system detected: ${parts[1]}`);
   }
-} else {
-  console.log(`No operating system detected in the log content.`);
 }
+// const matches = logContent.match(regexp);
+
+// if (matches) {
+//   for (let i = 0; i < matches.length; i++) {
+//     console.log(`Operating system detected: ${matches[i].replace("OS: ", "")}`);
+//   }
+// } else {
+//   console.log(`No operating system detected in the log content.`);
+// }

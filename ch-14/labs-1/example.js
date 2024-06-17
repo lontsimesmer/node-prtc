@@ -1,13 +1,13 @@
 // Operating system names validation
 
 const osNames = [
-  "Windows",
-  "Linux",
-  "macOS",
-  "sunOS",
-  "FreeBSD",
-  "AIX",
-  "GNU/Linux",
+  'Windows',
+  'Linux',
+  'macOS',
+  'sunOS',
+  'FreeBSD',
+  'AIX',
+  'GNU/Linux',
 ];
 const regex = /^(e|d|w|l|aix|.+bsd|sunos|macos|gnu|js)/i;
 
@@ -21,13 +21,13 @@ for (const osName of osNames) {
 
 // File names filtering in a directory
 
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
 // const directory = process.cwd()
 // console.log(directory);
 
-const directory = "/Users/HP/OneDrive/Documents/node-practice/ch-14/labs-1";
+const directory = '/Users/HP/OneDrive/Documents/node-practice/ch-14/labs-1';
 
 if (fs.existsSync(directory) && fs.statSync(directory).isDirectory()) {
   const files = fs.readdirSync(directory);
@@ -54,7 +54,7 @@ const logContent = `
 2024-06-13 11:51:05 - OS: AIX
 `;
 
-const lines = logContent.trim().split("\n");
+const lines = logContent.trim().split('\n');
 const regexp = /OS:\s*(\w+)/i;
 
 for (const line of lines) {

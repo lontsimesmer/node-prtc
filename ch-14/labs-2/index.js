@@ -1,10 +1,10 @@
-"use strict";
+'use strict'
 
-const os = require("os");
+const os = require('os')
 
 setTimeout(() => {
-  console.log(process.uptime()); // Output uptime of the process
-  console.log(os.uptime()); // Output uptime of OS
-  console.log(os.totalmem()); // Output total system memory
-  console.log(process.memoryUsage().heapTotal); // Output total heap memory
-}, 1000);
+  console.log(process.uptime()) // Output uptime of the process
+  console.log(os.uptime()) // Output uptime of OS
+  console.log(os.totalmem()) // Output total system memory
+  console.log(process.memoryUsage().heapTotal) // Output total heap memory
+}, 1000)

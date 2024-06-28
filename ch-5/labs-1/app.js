@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 // Method 1
 function prefixer(prefix) {
@@ -14,9 +14,9 @@ function prefixer(prefix) {
   };
 }
 
-const sayHiTo = prefixer("Hello ");
-const sayByeTo = prefixer("Goodbye ");
+const sayHiTo = prefixer('Hello ');
+const sayByeTo = prefixer('Goodbye ');
 
-console.log(sayHiTo("Dave")); // prints 'Hello Dave'
-console.log(sayHiTo("Annie")); // prints 'Hello Annie'
-console.log(sayByeTo("Dave")); // prints 'Goodbye Dave'
+console.log(sayHiTo('Dave')); // prints 'Hello Dave'
+console.log(sayHiTo('Annie')); // prints 'Hello Annie'
+console.log(sayByeTo('Dave')); // prints 'Goodbye Dave'

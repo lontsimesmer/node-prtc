@@ -1,15 +1,15 @@
-const assert = require("assert");
+const assert = require('assert');
 
 const leopard = {
   hiss() {
-    return "Felix the cat: hsss";
+    return 'Felix the cat: hsss';
   },
 };
 
 const lynx = Object.create(leopard, {
   purr: {
     value: function () {
-      return "Felix the cat: prrr";
+      return 'Felix the cat: prrr';
     },
   },
 });
@@ -17,7 +17,7 @@ const lynx = Object.create(leopard, {
 const cat = Object.create(lynx, {
   meow: {
     value: function () {
-      return "Felix the cat: meow";
+      return 'Felix the cat: meow';
     },
   },
 });
@@ -36,8 +36,8 @@ const felixTriProto = Object.getPrototypeOf(felixDiProto);
 assert(Object.getOwnPropertyNames(felixProto).length === 1);
 assert(Object.getOwnPropertyNames(felixDiProto).length === 1);
 assert(Object.getOwnPropertyNames(felixTriProto).length === 1);
-assert(typeof felixProto.meow === "function");
-assert(typeof felixDiProto.purr === "function");
-assert(typeof felixTriProto.hiss === "function");
+assert(typeof felixProto.meow === 'function');
+assert(typeof felixDiProto.purr === 'function');
+assert(typeof felixTriProto.hiss === 'function');
 
-console.log("prototype checks passed!");
+console.log('prototype checks passed!');

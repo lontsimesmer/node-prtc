@@ -5,15 +5,15 @@ const print = (err, contents) => {
 
 const opA = (cb) => {
   setTimeout(() => {
-    cb(null, "A");
+    cb(null, 'A');
   }, 500);
 };
 
 const opB = (cb) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      cb(null, "B");
-      resolve("B");
+      cb(null, 'B');
+      resolve('B');
     }, 250);
   });
 };
@@ -21,8 +21,8 @@ const opB = (cb) => {
 const opC = (cb) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      cb(null, "C");
-      resolve("C");
+      cb(null, 'C');
+      resolve('C');
     }, 125);
   });
 };
@@ -65,7 +65,7 @@ opC((err, resultC) => {
 
 // Method 3 using async Library
 
-const async = require("async");
+const async = require('async');
 
 // Using async.series, call the function in the desired order
 

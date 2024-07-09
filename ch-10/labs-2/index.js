@@ -1,31 +1,31 @@
-"use strict";
-const { readFileSync } = require("fs");
-const { readFile } = require("fs/promises");
-const assert = require("assert");
+'use strict';
+const { readFileSync } = require('fs');
+const { readFile } = require('fs/promises');
+const assert = require('assert');
 
 async function read(file) {
   try {
     const content = await readFile(file);
     return content;
   } catch (error) {
-    throw new Error("failed to read");
+    throw new Error('failed to read');
   }
 }
 
 async function check() {
-  // await assert.rejects(read("not-a-valid-filepath"), (error) => {
-  //   assert.strictEqual(error.message, "failed to read");
-  //   return true;
-  // });
+  await assert.rejects(read('not-a-valid-filepath'), (error) => {
+    assert.strictEqual(error.message, 'failed to read');
+    return true;
+  });
 
-  await assert.rejects(
-    read("not-a-valid-filepath"),
-    new Error("failed to read")
-  );
+  // await assert.rejects(
+  //   read('not-a-valid-filepath'),
+  //   new Error('failed to read')
+  // );
 
   assert.deepEqual(await read(__filename), readFileSync(__filename));
 
-  console.log("passed!");
+  console.log('passed!');
 }
 
 check();

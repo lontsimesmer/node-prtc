@@ -1,5 +1,5 @@
-"use strict";
-const assert = require("assert");
+'use strict';
+const assert = require('assert');
 
 function parseUrl(str) {
   try {
@@ -11,9 +11,9 @@ function parseUrl(str) {
 }
 
 assert.doesNotThrow(() => {
-  parseUrl("invalid-url");
+  parseUrl('invalid-url');
 });
-assert.equal(parseUrl("invalid-url"), null);
-assert.deepEqual(parseUrl("http://example.com"), new URL("http://example.com"));
+assert.equal(parseUrl('invalid-url'), null);
+assert.deepEqual(parseUrl('http://example.com'), new URL('http://example.com'));
 
-console.log("passed!");
+console.log('passed!');

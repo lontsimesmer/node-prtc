@@ -1,13 +1,13 @@
-"use strict";
-const { Readable, Writable } = require("stream");
-const assert = require("assert");
+'use strict';
+const { Readable, Writable } = require('stream');
+const assert = require('assert');
 
 const createWritable = () => {
   const sink = [];
   let piped = false;
   setImmediate(() => {
-    assert.strictEqual(piped, true, "use the pipe method");
-    assert.deepStrictEqual(sink, ["a", "b", "c"]);
+    assert.strictEqual(piped, true, 'use the pipe method');
+    assert.deepStrictEqual(sink, ['a', 'b', 'c']);
   });
 
   const writable = new Writable({
@@ -17,18 +17,18 @@ const createWritable = () => {
       cb();
     },
     final() {
-      console.log("passed!");
+      console.log('passed!');
     },
   });
 
-  writable.once("pipe", () => {
+  writable.once('pipe', () => {
     piped = true;
   });
 
   return writable;
 };
 
-const readable = Readable.from(["a", "b", "c"]);
+const readable = Readable.from(['a', 'b', 'c']);
 const writable = createWritable();
 
 // Send all data from readable to writable using the pipe() method

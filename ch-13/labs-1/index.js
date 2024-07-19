@@ -2,8 +2,9 @@
 const assert = require('assert');
 const { join } = require('path');
 const fs = require('fs');
-
+const path = require('path');
 const project = join(__dirname, 'project');
+
 try {
   fs.rmSync(project, { recursive: true });
 } catch (err) {}

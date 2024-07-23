@@ -1,10 +1,10 @@
-'use strict'
-const assert = require('assert')
-const os = require('os')
-const { runInThisContext } = require('vm')
-const run = (s) => runInThisContext(Buffer.from(s, 'base64'))
-const { log } = console
-const line = process.uptime()
+'use strict';
+const assert = require('assert');
+const os = require('os');
+const { runInThisContext } = require('vm');
+const run = (s) => runInThisContext(Buffer.from(s, 'base64'));
+const { log } = console;
+const line = process.uptime();
 
 const queue = [
   (line) =>
@@ -31,12 +31,12 @@ const queue = [
       run('cHJvY2Vzcy5tZW1vcnlVc2FnZSgpLmhlYXBUb3RhbA=='),
       'fourth line should be total process memory'
     ),
-]
+];
 console.log = (line) => {
-  queue.shift()(line)
+  queue.shift()(line);
   if (queue.length === 0) {
-    console.log = log
-    console.log('passed!')
+    console.log = log;
+    console.log('passed!');
   }
-}
-require('.')
+};
+require('.');

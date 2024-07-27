@@ -1,3 +1,5 @@
+const async = require('async');
+
 const print = (err, contents) => {
   if (err) console.error(err);
   else console.log(contents);
@@ -27,59 +29,85 @@ const opC = (cb) => {
   });
 };
 
-// Method 3 using async Library
+async.waterfall([opC, opB, opA], print);
 
-const async = require('async');
+// const opA = (cb) => {
+//   setTimeout(() => {
+//     cb(null, 'A');
+//   }, 500);
+// };
 
-// Using async.series, call the function in the desired order
+// const opB = (cb) => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       cb(null, 'B');
+//       resolve('B');
+//     }, 250);
+//   });
+// };
 
-async.series([opC, opB, opA], (err, results) => {
-  if (err) {
-    print(err);
-  } else {
-    results.forEach((result) => {
-      print(null, `[ ${result} ]`);
-    });
-  }
-});
+// const opC = (cb) => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       cb(null, 'C');
+//       resolve('C');
+//     }, 125);
+//   });
+// };
 
-// Method 4: using Promises
+// // Method 3 using async Library
 
-const OpA = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('A');
-    }, 500);
-  });
-};
+// const async = require('async');
 
-const OpB = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('B');
-    }, 250);
-  });
-};
+// // Using async.series, call the function in the desired order
 
-const OpC = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve('C');
-    }, 125);
-  });
-};
+// async.series([opC, opB, opA], (err, results) => {
+//   if (err) {
+//     print(err);
+//   } else {
+//     results.forEach((result) => {
+//       print(null, `[ ${result} ]`);
+//     });
+//   }
+// });
 
-// Call the function in the desired order using async/await
+// // Method 4: using Promises
 
-(async () => {
-  try {
-    const resultC = await OpC();
-    print(null, `[ ${resultC} ]`);
-    const resultB = await OpB();
-    print(null, `[ ${resultB} ]`);
-    const resultA = await OpA();
-    print(null, `[ ${resultA} ]`);
-  } catch (error) {
-    print(error);
-  }
-})();
+// const OpA = () => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve('A');
+//     }, 500);
+//   });
+// };
+
+// const OpB = () => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve('B');
+//     }, 250);
+//   });
+// };
+
+// const OpC = () => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve('C');
+//     }, 125);
+//   });
+// };
+
+// // Call the function in the desired order using async/await
+
+// (async () => {
+//   try {
+//     const resultC = await OpC();
+//     print(null, `[ ${resultC} ]`);
+//     const resultB = await OpB();
+//     print(null, `[ ${resultB} ]`);
+//     const resultA = await OpA();
+//     print(null, `[ ${resultA} ]`);
+//   } catch (error) {
+//     print(error);
+//   }
+// })();

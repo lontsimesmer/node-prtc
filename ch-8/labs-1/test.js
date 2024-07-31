@@ -12,12 +12,18 @@ const opA = (cb) => {
 };
 
 const opB = (cb) => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
-      cb(null, 'B');
       resolve('B');
     }, 250);
-  });
+  })
+    .then((result) => {
+      cb(null, result); // Call the callback function with the result
+      return result; // Return the result for the Promise chaining
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 const opC = (cb) => {
